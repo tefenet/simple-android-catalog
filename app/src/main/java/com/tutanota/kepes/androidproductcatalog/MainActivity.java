@@ -1,8 +1,8 @@
 package com.tutanota.kepes.androidproductcatalog;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Load from file "products.json" first time
         if(mAdapter == null) {
-            List<Product> products = null;
+            List<Product> products;
             products = loadProducts();
 
             //This is the GridView adapter

@@ -10,10 +10,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-/**
- * Created by revzan on 5/27/17.
- */
-
 public class ProductAdapter extends BaseAdapter {
     public static final String TAG = MainActivity.class.getName();
     private LayoutInflater inflater;
