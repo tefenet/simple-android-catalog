@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1031129015438",
+    "project_id": "android-product-catalog",
+    "storage_bucket": "android-product-catalog.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031129015438:android:7c2b69e083ed2812a3d5df",
+        "android_client_info": {
+          "package_name": "com.tutanota.kepes.androidproductcatalog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031129015438-ssu5hu63dvopj4ols6n975c4j5v8v5r1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwkgNqhFRFQCdb9v4hddBopRxM59JntLQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031129015438-ssu5hu63dvopj4ols6n975c4j5v8v5r1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

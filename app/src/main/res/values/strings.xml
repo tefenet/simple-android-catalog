@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Herramientas</string>
+    <string name="title_activity_detail_product">DetailProduct</string>
+    <string name="herramientas_electricas">Herramientas Eléctricas</string>
+    <string name="shopicle">SHOPICLE</string>
+    <string name="detail">detail</string>
+</resources>
