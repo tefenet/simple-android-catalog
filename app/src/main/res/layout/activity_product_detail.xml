@@ -1,110 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="1">
 
-        <ScrollView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.9"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.8"
-            >
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/detailTitle"
+                android:layout_width="300dp"
+                android:layout_height="25dp"
+                android:gravity="center"
+                android:text="iPhone 6S 16GB"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                />
+
+            <ImageView
+                android:id="@+id/detailImage"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:contentDescription="@string/detail" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="300dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.74"
+                android:gravity="start|center"
+                android:text="@string/definition"
+                android:textColor="#0f596b"
+                android:textSize="17sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/detailTitle"
-                    android:layout_width="300dp"
-                    android:layout_height="25dp"
-                    android:layout_weight="0.74"
-                    android:gravity="start|center"
-                    android:text="iPhone 6S 16GB"
-                    android:textColor="#000"
-                    android:textSize="18sp" />
-
-                <ImageView
-                    android:id="@+id/detailImage"
+                    android:id="@+id/detailDesc"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:contentDescription="@string/detail" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="300dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="0.74"
+                    android:layout_height="wrap_content"
                     android:gravity="start|center"
-                    android:text="@string/definition"
-                    android:textColor="#0f596b"
-                    android:textSize="17sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/detailDesc"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="start|center"
-                        android:lineSpacingMultiplier="1.3"
-                        android:text="Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an"
-                        android:textColor="#aaa"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="300dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="0.74"
-                    android:gravity="start|center"
-                    android:text="@string/function"
-                    android:textColor="#0f596b"
-                    android:textSize="17sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.74"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/detailFunc"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="start|center"
-                        android:lineSpacingMultiplier="1.3"
-                        android:text="Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an"
-                        android:textColor="#aaa"
-                        android:textSize="14sp" />
-                </LinearLayout>
+                    android:lineSpacingMultiplier="1.3"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:text="Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an"
+                    android:textColor="#061949"
+                    android:textSize="14sp" />
             </LinearLayout>
-        </ScrollView>
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="300dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.74"
+                android:gravity="start|center"
+                android:text="@string/function"
+                android:textColor="#0f596b"
+                android:textSize="17sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.74"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/detailFunc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|center"
+                    android:lineSpacingMultiplier="1.3"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:text="Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting. Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an"
+                    android:textColor="#061949"
+                    android:textSize="14sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
         <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="bottom"
-        android:layout_weight="0.2"
+        android:layout_weight="0.1"
         android:gravity="bottom">
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#0f596b"
-            android:text="Video"
-            android:textColor="#fff"
-            android:textSize="17sp" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#4CAF50"
+                android:text="Video"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:textStyle="bold" />
     </RelativeLayout>
 
 </LinearLayout>
