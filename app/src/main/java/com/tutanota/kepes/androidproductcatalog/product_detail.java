@@ -28,14 +28,14 @@ public class product_detail extends AppCompatActivity {
         Realm realm = Realm.getDefaultInstance();
         Product product = realm.where(Product.class).equalTo("_id",position).findFirst();
         TextView title = findViewById(R.id.detailTitle);
-        //TextView price = (TextView) findViewById(R.id.detailPrice);
         TextView desc = findViewById(R.id.detailDesc);
+        TextView func = findViewById(R.id.detailFunc);
         ImageView image = findViewById(R.id.detailImage);
         int drawableId = getResources().getIdentifier(product.getImage_name(), "drawable", getPackageName());
         //Picasso.get().load(drawableId).into(image);
         title.setText(product.getName());
-        //price.setText(String.valueOf("IDR ").concat(product.get_price()));
         desc.setText(product.getDefinition());
+        func.setText(product.getFunction());
         image.setImageResource(drawableId);
     }
 

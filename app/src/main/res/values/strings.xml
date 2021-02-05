@@ -4,4 +4,6 @@
     <string name="herramientas_electricas">Herramientas Eléctricas</string>
     <string name="shopicle">SHOPICLE</string>
     <string name="detail">detail</string>
+    <string name="definition">Definicion</string>
+    <string name="function">Función</string>
 </resources>

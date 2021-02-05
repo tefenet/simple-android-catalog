@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:numColumns="2"
-            android:stretchMode="columnWidth"></in.srain.cube.views.GridViewWithHeaderAndFooter>
+            android:stretchMode="columnWidth" />
 
     </LinearLayout>
 

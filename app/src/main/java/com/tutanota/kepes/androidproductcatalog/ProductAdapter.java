@@ -54,7 +54,7 @@ public class ProductAdapter extends BaseAdapter {
 
         if (product != null) {
             ((TextView) currentView.findViewById(R.id.productName)).setText(product.getName());
-            ((TextView) currentView.findViewById(R.id.productSeller)).setText(product.getVideo_url());
+            ((TextView) currentView.findViewById(R.id.productSeller)).setText(product.getImage_name());
             int drawableId = inflater.getContext().getResources().getIdentifier(product.getImage_name(), "drawable", inflater.getContext().getPackageName());
             ((ImageView) currentView.findViewById(R.id.productImage)).setImageResource(drawableId);
 

@@ -5,7 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
+
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -17,15 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.gson.Gson;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 import java.util.Objects;
 
@@ -39,15 +31,17 @@ public class MainActivity extends AppCompatActivity {
     private Realm realm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d("start","starting");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 //      Custom App Bar
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.activity_customheader);
+        Log.d("header","header ok");
         mAdapter= new ProductAdapter(this);
         initRealm();
         syncCloudState();
-        GridViewWithHeaderAndFooter mGridView = findViewById(R.id.productList);
+        GridViewWithHeaderAndFooter mGridView = (GridViewWithHeaderAndFooter) findViewById(R.id.productList);
         mGridView.setOnItemClickListener(new ItemClickListener());
         mGridView.setAdapter(mAdapter);
         mGridView.invalidate();
@@ -58,17 +52,21 @@ public class MainActivity extends AppCompatActivity {
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder().build();
         Realm.deleteRealm(realmConfiguration);
         realm = Realm.getDefaultInstance();
+        Log.d("realm","realm initialized success");
     }
 
     private void syncCloudState() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Log.d("firebase","db instance ok");
         db.collection("tools")
-                .get()
+                .orderBy("_id").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
+                            Log.d("firebase","task ok");
                             List<Product> toolsList= Objects.requireNonNull(task.getResult()).toObjects(Product.class);
+                            Log.i("firebase", String.valueOf(toolsList.size()));
                             mAdapter.setData(toolsList);
                             realm.beginTransaction();
                             realm.copyToRealm(toolsList);
