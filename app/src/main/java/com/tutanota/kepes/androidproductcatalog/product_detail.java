@@ -27,27 +27,24 @@ public class product_detail extends AppCompatActivity {
         Realm.init(this);
         Realm realm = Realm.getDefaultInstance();
         Product product = realm.where(Product.class).equalTo("_id",position).findFirst();
-        TextView title = (TextView) findViewById(R.id.detailTitle);
+        TextView title = findViewById(R.id.detailTitle);
         //TextView price = (TextView) findViewById(R.id.detailPrice);
-        TextView desc = (TextView) findViewById(R.id.detailDesc);
-        ImageView image = (ImageView) findViewById(R.id.detailImage);
-        int drawableId = getResources().getIdentifier(product.get_thumbnail(), "drawable", getPackageName());
+        TextView desc = findViewById(R.id.detailDesc);
+        ImageView image = findViewById(R.id.detailImage);
+        int drawableId = getResources().getIdentifier(product.getImage_name(), "drawable", getPackageName());
         //Picasso.get().load(drawableId).into(image);
-        title.setText(product.get_name());
+        title.setText(product.getName());
         //price.setText(String.valueOf("IDR ").concat(product.get_price()));
-        desc.setText(product.get_description());
+        desc.setText(product.getDefinition());
         image.setImageResource(drawableId);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // app icon in action bar clicked; goto parent activity.
-                this.finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home) {// app icon in action bar clicked; goto parent activity.
+            this.finish();
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -35,25 +35,13 @@ public class ProductAdapter extends BaseAdapter {
         if (products == null || products.get(position) == null) {
             return null;
         }
-        Product product = products.get(position);
-        return product;
+        return products.get(position);
     }
 
     @Override
     public long getItemId(int i) {
         Product product = products.get(i);
         return product.get_id();
-    }
-
-
-    private int getImageResForPosition(int position) {
-        Product product = products.get(position);
-        if (product.get_thumbnail().equals("fog_design_art")) {
-            return R.drawable.fog_design_art;
-        } else if (product.get_thumbnail().equals("rectangle_7")) {
-            return R.drawable.rectangle_7;
-        }
-        return 0;
     }
 
     @Override
@@ -65,10 +53,9 @@ public class ProductAdapter extends BaseAdapter {
         Product product = products.get(position);
 
         if (product != null) {
-            ((TextView) currentView.findViewById(R.id.productName)).setText(product.get_name());
-            ((TextView) currentView.findViewById(R.id.productPrice)).setText("IDR "+product.get_price());
-            ((TextView) currentView.findViewById(R.id.productSeller)).setText(product.get_seller());
-            int drawableId = inflater.getContext().getResources().getIdentifier(product.get_thumbnail(), "drawable", inflater.getContext().getPackageName());
+            ((TextView) currentView.findViewById(R.id.productName)).setText(product.getName());
+            ((TextView) currentView.findViewById(R.id.productSeller)).setText(product.getVideo_url());
+            int drawableId = inflater.getContext().getResources().getIdentifier(product.getImage_name(), "drawable", inflater.getContext().getPackageName());
             ((ImageView) currentView.findViewById(R.id.productImage)).setImageResource(drawableId);
 
         }

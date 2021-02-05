@@ -5,12 +5,11 @@ import io.realm.RealmObject;
 
 public class Product extends RealmObject{
     private long _id;
-    private String _name;
-    private String _price;
-    private String _seller;
-    private String _sellerlocation;
-    private String _description;
-    private String _thumbnail;
+    private String name;
+    private String video_url;
+    private String function;
+    private String definition;
+    private String image_name;
 //    private byte[] _image;
 
     public long get_id() {
@@ -21,51 +20,43 @@ public class Product extends RealmObject{
         this._id = _id;
     }
 
-    public String get_name() {
-        return _name;
+    public String getName() {
+        return name;
     }
 
-    public void set_name(String _name) {
-        this._name = _name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String get_price() {
-        return _price;
+    public String getVideo_url() {
+        return video_url;
     }
 
-    public void set_price(String _price) {
-        this._price = _price;
+    public void setVideo_url(String video_url) {
+        this.video_url = video_url;
     }
 
-    public String get_seller() {
-        return _seller;
+    public String getFunction() {
+        return function;
     }
 
-    public void set_seller(String _seller) {
-        this._seller = _seller;
+    public void setFunction(String function) {
+        this.function = function;
     }
 
-    public String get_sellerlocation() {
-        return _sellerlocation;
+    public String getDefinition() {
+        return definition;
     }
 
-    public void set_sellerlocation(String _sellerlocation) {
-        this._sellerlocation = _sellerlocation;
+    public void setDefinition(String definition) {
+        this.definition = definition;
     }
 
-    public String get_description() {
-        return _description;
+    public String getImage_name() {
+        return image_name;
     }
 
-    public void set_description(String _description) {
-        this._description = _description;
-    }
-
-    public String get_thumbnail() {
-        return _thumbnail;
-    }
-
-    public void set_thumbnail(String _thumbnail) {
-        this._thumbnail = _thumbnail;
+    public void setImage_name(String image_name) {
+        this.image_name = image_name;
     }
 }

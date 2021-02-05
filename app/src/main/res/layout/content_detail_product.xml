@@ -121,16 +121,6 @@
                     android:textColor="#aaa"
                     android:textSize="14dp" />
             </LinearLayout>
-
-
-
-
-
         </LinearLayout>
-
     </LinearLayout>
-
-
-
-
 </LinearLayout>
