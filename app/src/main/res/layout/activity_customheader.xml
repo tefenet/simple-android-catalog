@@ -17,6 +17,6 @@
         android:text="@string/herramientas_electricas"
         android:textAlignment="center"
         android:textColor="#ffffff"
-        android:textSize="34sp"
+        android:textSize="25sp"
         android:gravity="center_horizontal" />
 </LinearLayout>

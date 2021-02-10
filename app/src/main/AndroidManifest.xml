@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tutanota.kepes.androidproductcatalog">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name="com.tutanota.kepes.androidproductcatalog.MainActivity"
-            android:screenOrientation="portrait">
+        android:theme="@style/AppTheme"
+        android:fullBackupContent="false"
+        android:allowBackup="true">
+        <activity
+            android:name=".VideoActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/title_activity_video" />
+        <activity
+            android:name=".MainActivity"
+
+            android:configChanges="screenSize|orientation">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.tutanota.kepes.androidproductcatalog.customheader" />
-        <!--<activity
+        <activity android:name=".customheader" />
+        <!--
+<activity
             android:name="com.tutanota.kepes.androidproductcatalog.DetailProduct"
             android:label="descripción"
             android:parentActivityName="com.tutanota.kepes.androidproductcatalog.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />-->
-        <activity android:name="com.tutanota.kepes.androidproductcatalog.product_detail"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        -->
+        <activity android:name=".product_detail" />
     </application>
 
 </manifest>
