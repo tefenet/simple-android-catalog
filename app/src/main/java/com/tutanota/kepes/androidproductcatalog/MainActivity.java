@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.List;
@@ -82,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     class ItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-            Intent intent = new Intent(getApplicationContext(), product_detail.class);
+            Intent intent = new Intent(getApplicationContext(), ProductDetail.class);
             intent.putExtra("POSITION", i + 1);
             startActivity(intent);
         }

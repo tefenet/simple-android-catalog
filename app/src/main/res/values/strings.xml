@@ -1,12 +1,17 @@
 <resources>
     <string name="app_name">Herramientas</string>
-    <string name="title_activity_detail_product">DetailProduct</string>
+    <string name="title_activity_detail_product">Detalle de Herramienta</string>
     <string name="herramientas_electricas">Herramientas Eléctricas</string>
-    <string name="shopicle">SHOPICLE</string>
+    <string name="useMode">Modo de uso</string>
     <string name="detail">detail</string>
     <string name="definition">Definicion</string>
     <string name="function">Función</string>
+    <string name="typeTools">Tipos de Herramienta</string>
+    <string name="prevents">Precauciones</string>
+    <string name="parts">Componentes</string>
+    <string name="apli">Aplicación</string>
     <string name="title_activity_video">Video stream</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>

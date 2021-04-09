@@ -3,15 +3,67 @@ package com.tutanota.kepes.androidproductcatalog;
 import io.realm.RealmObject;
 
 
-public class Product extends RealmObject{
+public class Product extends RealmObject {
     private long _id;
     private String name;
     private String video_url;
     private String function;
     private String definition;
     private String image_name;
-//    private byte[] _image;
+    private String use_mode;
+    private String apli;
+    private String parts;
+    private String prevents;
+    private String tool_type;
+    private String others="";
 
+    public String getUse_mode() {
+        return use_mode;
+    }
+
+    public void setUse_mode(String use_mode) {
+        this.use_mode = use_mode;
+    }
+
+    public String getApli() {
+        return apli;
+    }
+
+    public void setApli(String apli) {
+        this.apli = apli;
+    }
+
+    public String getParts() {
+        return parts;
+    }
+
+    public void setParts(String parts) {
+        this.parts = parts;
+    }
+
+    public String getPrevents() {
+        return prevents;
+    }
+
+    public void setPrevents(String prevents) {
+        this.prevents = prevents;
+    }
+
+    public String getTool_type() {
+        return tool_type;
+    }
+
+    public void setTool_type(String tool_type) {
+        this.tool_type = tool_type;
+    }
+
+    public String getOthers() {
+        return others;
+    }
+
+    public void setOthers(String others) {
+        this.others = others;
+    }
     public long get_id() {
         return _id;
     }

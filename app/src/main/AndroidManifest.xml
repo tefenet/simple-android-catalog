@@ -32,7 +32,7 @@
             android:parentActivityName="com.tutanota.kepes.androidproductcatalog.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         -->
-        <activity android:name=".product_detail" />
+        <activity android:name=".ProductDetail" />
     </application>
 
 </manifest>
