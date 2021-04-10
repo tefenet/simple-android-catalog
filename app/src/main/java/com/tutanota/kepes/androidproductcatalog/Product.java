@@ -1,14 +1,18 @@
 package com.tutanota.kepes.androidproductcatalog;
 
 import android.os.Build;
+import android.text.Editable;
 import android.text.Html;
 import android.text.Spanned;
 
 import androidx.core.text.HtmlCompat;
 
+import org.xml.sax.XMLReader;
+
 import io.realm.RealmObject;
 
 import static android.text.Html.FROM_HTML_MODE_COMPACT;
+import static android.text.Html.FROM_HTML_MODE_LEGACY;
 import static androidx.core.text.HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH;
 
 
@@ -121,23 +125,25 @@ public class Product extends RealmObject {
     }
 
     public Spanned processHtmlString(String htmlString){
-        // remove leading <br/>
-        while (htmlString.startsWith("<br/>")){
-            htmlString = htmlString.replaceFirst("<br/>", "");
-        }
-        // remove trailing <br/>
-        while (htmlString.endsWith("<br/>")){
-            htmlString =  htmlString.replaceAll("<br/>$", "");
-        }
         Spanned seq;
         // reduce multiple \n in the processed HTML string
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             seq = Html.fromHtml(htmlString,  FROM_HTML_MODE_COMPACT);
         }else{
-            seq = Html.fromHtml(htmlString);
+            seq = HtmlCompat.fromHtml(htmlString, HtmlCompat.FROM_HTML_MODE_COMPACT, null, new UlTagHandler());
         }
-        return seq.length()>1 ? trim(seq,0,seq.length()): seq;
+        return seq.length()>1? trim(seq,0,seq.length()):seq;
     }
+    static class UlTagHandler implements Html.TagHandler {
+        @Override
+        public void handleTag(boolean opening, String tag, Editable output, XMLReader xmlReader) {
+            if (tag.equals("ul") && !opening) output.append("\n");
+            if (tag.equals("ol") && !opening) output.append("\n");
+            if (tag.equals("li") && opening) output.append("\n•");
+        }
+    }
+
+
     public Spanned trim(CharSequence s, int start, int end) {
         while (start < end && Character.isWhitespace(s.charAt(start))) {
             start++;
