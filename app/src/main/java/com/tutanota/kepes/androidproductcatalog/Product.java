@@ -1,6 +1,15 @@
 package com.tutanota.kepes.androidproductcatalog;
 
+import android.os.Build;
+import android.text.Html;
+import android.text.Spanned;
+
+import androidx.core.text.HtmlCompat;
+
 import io.realm.RealmObject;
+
+import static android.text.Html.FROM_HTML_MODE_COMPACT;
+import static androidx.core.text.HtmlCompat.FROM_HTML_SEPARATOR_LINE_BREAK_PARAGRAPH;
 
 
 public class Product extends RealmObject {
@@ -17,40 +26,40 @@ public class Product extends RealmObject {
     private String tool_type;
     private String others="";
 
-    public String getUse_mode() {
-        return use_mode;
+    public Spanned getUse_mode() {
+        return processHtmlString(use_mode);
     }
 
     public void setUse_mode(String use_mode) {
         this.use_mode = use_mode;
     }
 
-    public String getApli() {
-        return apli;
+    public Spanned getApli() {
+        return processHtmlString(apli);
     }
 
     public void setApli(String apli) {
         this.apli = apli;
     }
 
-    public String getParts() {
-        return parts;
+    public Spanned getParts() {
+        return processHtmlString(parts);
     }
 
     public void setParts(String parts) {
         this.parts = parts;
     }
 
-    public String getPrevents() {
-        return prevents;
+    public Spanned getPrevents() {
+        return processHtmlString(prevents);
     }
 
     public void setPrevents(String prevents) {
         this.prevents = prevents;
     }
 
-    public String getTool_type() {
-        return tool_type;
+    public Spanned getTool_type() {
+        return processHtmlString(tool_type);
     }
 
     public void setTool_type(String tool_type) {
@@ -88,16 +97,15 @@ public class Product extends RealmObject {
         this.video_url = video_url;
     }
 
-    public String getFunction() {
-        return function;
+    public Spanned getFunction() {
+        return processHtmlString(function);
     }
-
     public void setFunction(String function) {
         this.function = function;
     }
 
-    public String getDefinition() {
-        return definition;
+    public Spanned getDefinition() {
+        return processHtmlString(definition);
     }
 
     public void setDefinition(String definition) {
@@ -110,5 +118,33 @@ public class Product extends RealmObject {
 
     public void setImage_name(String image_name) {
         this.image_name = image_name;
+    }
+
+    public Spanned processHtmlString(String htmlString){
+        // remove leading <br/>
+        while (htmlString.startsWith("<br/>")){
+            htmlString = htmlString.replaceFirst("<br/>", "");
+        }
+        // remove trailing <br/>
+        while (htmlString.endsWith("<br/>")){
+            htmlString =  htmlString.replaceAll("<br/>$", "");
+        }
+        Spanned seq;
+        // reduce multiple \n in the processed HTML string
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            seq = Html.fromHtml(htmlString,  FROM_HTML_MODE_COMPACT);
+        }else{
+            seq = Html.fromHtml(htmlString);
+        }
+        return seq.length()>1 ? trim(seq,0,seq.length()): seq;
+    }
+    public Spanned trim(CharSequence s, int start, int end) {
+        while (start < end && Character.isWhitespace(s.charAt(start))) {
+            start++;
+        }
+        while (end > start && Character.isWhitespace(s.charAt(end - 1))) {
+            end--;
+        }
+        return (Spanned) s.subSequence(start, end);
     }
 }

@@ -4,36 +4,28 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.FrameLayout;
+
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.text.HtmlCompat;
 import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
-import androidx.fragment.app.Fragment;
+
 
 import com.tutanota.kepes.androidproductcatalog.databinding.ActivityProductDetailBinding;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-import java.util.stream.Stream;
-
 import io.realm.Realm;
 
 public class ProductDetail extends AppCompatActivity {
@@ -62,32 +54,41 @@ public class ProductDetail extends AppCompatActivity {
         ((ImageView) findViewById(R.id.detailImage)).setImageResource(drawableId);
         String others=product.getOthers();
         if (!TextUtils.isEmpty(others)) {
-            LinearLayout frameLayout = findViewById(R.id.othersImage);
-            for (String anotherImage : others.split(",")) {
-                drawableId = resources.getIdentifier(anotherImage.trim(), "drawable", getPackageName());
-                ImageView myImage = new ImageView(this);
-                myImage.setLayoutParams(new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.MATCH_PARENT));
-                myImage.setImageResource(drawableId);
-                frameLayout.addView(myImage);
-            }
+            addImages(others);
         }
-//        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openNewActivity();
-//            }
-//        });
-
-//        if (savedInstanceState == null) {
-//            getSupportFragmentManager().beginTransaction()
-//                    .setReorderingAllowed(true)
-//                    .add(R.id.fragment_container_view,new Element("Aplicación", product.getApli()) , null)
-//                    .commit();
-//        }
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewActivity();
+            }
+        });
     }
+    public void addImages(String others){
+        LinearLayout frameLayout = findViewById(R.id.othersImage);
+        float dpCalculation = getResources().getDisplayMetrics().density;
 
+        for (String anotherImage : others.split(",")) {
+            int drawableId = resources.getIdentifier(anotherImage.trim(), "drawable", getPackageName());
+            ImageView myImage = new ImageView(this);
+            LinearLayout.LayoutParams args = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    (int) (250 * dpCalculation));
+            args.setMarginEnd(8);
+            myImage.setLayoutParams(args);
+            myImage.setImageResource(drawableId);
+            myImage.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            myImage.setAdjustViewBounds(true);
+            myImage.requestLayout();
+            frameLayout.addView(myImage);
+            TextView myText = new TextView(this);
+            args = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT);
+            myText.setLayoutParams(args);
+            myText.setText(anotherImage);
+            frameLayout.addView(myText);
+        }
+    }
     public void openNewActivity(){
         Intent intent = new Intent(this, VideoActivity.class);
         intent.setData(Uri.parse(product.getVideo_url()));
@@ -103,27 +104,7 @@ public class ProductDetail extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     @BindingAdapter("app:hideIfEmpty")
-    public static void hideIfEmpty(View view, String aText) {
+    public static void hideIfEmpty(View view, CharSequence aText) {
         view.setVisibility(TextUtils.isEmpty(aText)? View.GONE : View.VISIBLE);
     }
-
-//    public static class Element extends Fragment {
-//        private final String title;
-//        private final String body;
-//
-//        public Element(String title, String body) {
-//            super(R.layout.element);
-//            this.title = title;
-//            this.body = body;
-//        }
-//
-//        @Override
-//        public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-//                                 Bundle savedInstanceState) {
-//            View elem= View.inflate(this.getContext(), R.layout.element, null);
-//            ((TextView)elem.findViewById(R.id.stubTitle)).setText(title);
-//            ((TextView)elem.findViewById(R.id.stubContent)).setText(body);
-//            return elem;
-//        }
-//    }
 }

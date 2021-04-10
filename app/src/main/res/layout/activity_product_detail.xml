@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:bind="http://schemas.android.com/tools">
+    >
 
     <data>
         <variable
@@ -59,6 +59,7 @@
                 <include layout="@layout/element" android:id="@+id/includedType"
                     app:title="@{@string/typeTools}" app:body="@{product.tool_type}"
                     app:hideIfEmpty="@{product.tool_type}"/>
+
                 <LinearLayout
                     android:id="@+id/othersImage"
                     android:layout_width="match_parent"
@@ -72,12 +73,6 @@
                 <include layout="@layout/element" android:id="@+id/includedParts"
                     app:title="@{@string/parts}" app:body="@{product.parts}"
                     app:hideIfEmpty="@{product.parts}"/>
-                <!-- res/layout/example_activity.xml -->
-<!--                <androidx.fragment.app.FragmentContainerView-->
-<!--                    android:id="@+id/fragment_container_view"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    />-->
 
             </LinearLayout>
         </ScrollView>
@@ -98,7 +93,7 @@
                 android:textColor="#000000"
                 android:textSize="17sp"
                 android:textStyle="bold"
-                android:onClick="openNewActivity"/>
+                />
         </RelativeLayout>
 
     </LinearLayout>
